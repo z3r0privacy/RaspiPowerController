@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+{% for r in relais %}
+<div class="row">
+    <div class="col-md-12 text-center">
+        <form method="POST" action="toggleRelais">
+        <button type="submit" name="relaisName" class="switch btn btn-info" value="{{r.name}}">{{r.name}} ({% if r.isCurrentlyOn %}On{% else %}Off{% endif %})</button>
+    </form>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

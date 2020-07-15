@@ -1,0 +1,40 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static', filename='custom.css')}}">
+{% endblock %}
+
+{% block title %}
+    Raspi Power Controller
+{% endblock %}
+
+{% block content %}
+    <div class="container body-content">
+        <center><h1>Raspi Power Control</h1></center>
+        {# application content needs to be provided in the app_content block #}
+        {% block app_content %}{% endblock %}
+        {% with succs = get_flashed_messages(category_filter=["success"]) %}
+{% if succs %}
+    {%- for msg in succs %}
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {{ msg }}
+        </div>
+    {% endfor -%}
+{% endif %}
+{% endwith %}
+
+{% with errors = get_flashed_messages(category_filter=["error"]) %}
+{% if errors %}
+    {%- for msg in errors %}
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {{ msg }}
+        </div>
+{% endfor -%}
+{% endif %}
+{% endwith %}
+
+    </div>
+{% endblock %}
