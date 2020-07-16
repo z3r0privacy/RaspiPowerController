@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.secret_key = os.environ.get('FLASK_SECRET_KEY')
 bootstrap = Bootstrap(app)
 
-relais = yaml.safe_load(open("config.yaml"))['relais']
+relais = yaml.safe_load(open(os.environ.get('APP_CONFIG')))['relais']
 for i in range(len(relais)):
     try:
         relais[i]['device'] = OutputDevice(relais[i]['pin'])
