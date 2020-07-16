@@ -1,0 +1,7 @@
+relais:
+  - name: "Radio"
+    pin: 26
+  - name: "Relais 2"
+    pin: 27
+  - name: "Relais 3"
+    pin: 28

@@ -15,7 +15,8 @@
                 "FLASK_APP": "powercontroller.py",
                 "FLASK_ENV": "development",
                 "FLASK_DEBUG": "0",
-                "FLASK_SECRET_KEY": "*hv`aCgeX=e3{(xzKRN;"
+                "FLASK_SECRET_KEY": "*hv`aCgeX=e3{(xzKRN;",
+                "APP_CONFIG": "config.yaml"
             },
             "args": [
                 "run",

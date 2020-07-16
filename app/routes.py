@@ -1,9 +1,11 @@
 from flask import render_template, redirect, url_for, request, flash
 from app import app, relais
+from .permflash import flashPermMessages
 
 @app.route('/')
 @app.route('/index')
 def index():
+    flashPermMessages()
     return render_template('index.html', relais=relais)
 
 @app.route('/toggleRelais', methods=['POST'])
@@ -15,7 +17,8 @@ def toggleRelais():
     found = False
     for r in relais:
         if r['name'] == rel:
-            r['isCurrentlyOn'] = not r['isCurrentlyOn']
+            found = True
+            r['device'].toggle()
             toggledSuccessfully = True
             break
 

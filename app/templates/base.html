@@ -14,8 +14,21 @@
         <center><h1>Raspi Power Control</h1></center>
         {# application content needs to be provided in the app_content block #}
         {% block app_content %}{% endblock %}
+
+
+        {% with perms = get_flashed_messages(category_filter=["perm"]) %}
+{% if perms %}
+    {%- for msg in perms %}
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {{ msg }}
+        </div>
+{% endfor -%}
+{% endif %}
+{% endwith %}
+
         {% with succs = get_flashed_messages(category_filter=["success"]) %}
-{% if succs %}
+        {% if succs %}
     {%- for msg in succs %}
     <div class="alert alert-success alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
