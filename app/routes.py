@@ -18,8 +18,11 @@ def toggleRelais():
     for r in relais:
         if r['name'] == rel:
             found = True
-            r['device'].toggle()
-            toggledSuccessfully = True
+            try:
+                r['device'].toggle()
+                toggledSuccessfully = True
+            except:
+                pass
             break
 
     if toggledSuccessfully:
