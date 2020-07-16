@@ -2,6 +2,6 @@ relais:
   - name: "Radio"
     pin: 26
   - name: "Relais 2"
-    pin: 27
+    pin: 20
   - name: "Relais 3"
-    pin: 28
+    pin: 21
