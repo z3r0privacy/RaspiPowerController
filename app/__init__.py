@@ -4,7 +4,9 @@ from gpiozero import OutputDevice
 import os
 import yaml
 from .pseudoOutputDevice import PseudoOutputDevice
-from .permflash import addPermMessage
+from .helper import addPermMessage, calculateSetValue
+
+
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('FLASK_SECRET_KEY')
@@ -16,7 +18,7 @@ bootstrap = Bootstrap(app)
 relais = yaml.safe_load(open(os.environ.get('APP_CONFIG')))['relais']
 for i in range(len(relais)):
     try:
-        relais[i]['device'] = OutputDevice(relais[i]['pin'], active_high=False)
+        relais[i]['device'] = OutputDevice(relais[i]['pin'], active_high=False, initial_value=calculateSetValue(relais[i]['failSafe'], relais[i]['startValue']))
     except:
         print("Only PseudoOutputDevice loaded for relais " + relais[i]['name'])
         addPermMessage("Only PseudoOutputDevice loaded for relais " + relais[i]['name'])

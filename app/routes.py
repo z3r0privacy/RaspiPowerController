@@ -1,13 +1,13 @@
 from flask import render_template, redirect, url_for, request, flash
 from app import app, relais
-from .permflash import flashPermMessages
+from .helper import flashPermMessages, calculateCurrentStatus
 import sys
 
 @app.route('/')
 @app.route('/index')
 def index():
     flashPermMessages()
-    return render_template('index.html', relais=relais)
+    return render_template('index.html', relais=relais, isOn=calculateCurrentStatus)
 
 @app.route('/toggleRelais', methods=['POST'])
 def toggleRelais():

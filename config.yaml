@@ -1,7 +1,13 @@
 relais:
   - name: "Radio"
     pin: 26
+    failSafe: true
+    startValue: true
   - name: "Relais 2"
     pin: 20
+    failSafe: false
+    startValue: true
   - name: "Relais 3"
     pin: 21
+    failSafe: false
+    startValue: true
