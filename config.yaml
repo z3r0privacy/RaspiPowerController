@@ -6,8 +6,8 @@ relais:
   - name: "Relais 2"
     pin: 20
     failSafe: false
-    startValue: true
+    startValue: false
   - name: "Relais 3"
     pin: 21
     failSafe: false
-    startValue: true
+    startValue: false
