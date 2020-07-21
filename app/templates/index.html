@@ -10,4 +10,11 @@
     </div>
 </div>
 {% endfor %}
+<div class="row">
+    <div class="col-md-12 text-center">
+        <form method="POST" action="restartService">
+            <button type="submit" name="restart" class="switch btn btn-danger">Update and Restart</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

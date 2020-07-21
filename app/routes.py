@@ -37,8 +37,10 @@ def toggleRelais():
 
 @app.route('/restartService', methods=['POST'])
 def restartService():
+    #flash("The controller server is updating and restarting, please wait a few seconds and refresh the page", 'error')
     func = request.environ.get('werkzeug.server.shutdown')
     if func is None:
         raise RuntimeError('Not running with the Werkzeug Server')
+    result = render_template('restart.html')
     func()
-    return ('', 204)
+    return result
