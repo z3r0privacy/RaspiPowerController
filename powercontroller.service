@@ -1,0 +1,18 @@
+[Unit]
+Description=Controlling relays for switching power lanes on and off
+After=network.target
+
+[Service]
+Type=simple
+User=root
+
+Environment=FLASK_APP=app/powercontroller.py
+Environment=FLASK_SECRET_KEY=CHANGE_ME
+Environment=APP_CONFIG=config.yaml
+
+WorkingDirectory=/path/to/directory
+ExecStart=/path/to/run.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

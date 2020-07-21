@@ -8,6 +8,9 @@ from .permflash import addPermMessage
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('FLASK_SECRET_KEY')
+if app.secret_key == "CHANGE_ME":
+    raise Exception("default key not changed")
+
 bootstrap = Bootstrap(app)
 
 relais = yaml.safe_load(open(os.environ.get('APP_CONFIG')))['relais']

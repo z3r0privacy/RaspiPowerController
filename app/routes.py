@@ -1,6 +1,7 @@
 from flask import render_template, redirect, url_for, request, flash
 from app import app, relais
 from .permflash import flashPermMessages
+import sys
 
 @app.route('/')
 @app.route('/index')
@@ -33,3 +34,11 @@ def toggleRelais():
         flash("Unknown error while trying to toggle relais '" + rel + "'", 'error')
 
     return redirect(url_for('index'))
+
+@app.route('/restartService', methods=['POST'])
+def restartService():
+    func = request.environ.get('werkzeug.server.shutdown')
+    if func is None:
+        raise RuntimeError('Not running with the Werkzeug Server')
+    func()
+    return ('', 204)
