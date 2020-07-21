@@ -16,7 +16,7 @@ bootstrap = Bootstrap(app)
 relais = yaml.safe_load(open(os.environ.get('APP_CONFIG')))['relais']
 for i in range(len(relais)):
     try:
-        relais[i]['device'] = OutputDevice(relais[i]['pin'])
+        relais[i]['device'] = OutputDevice(relais[i]['pin'], active_high=False)
     except:
         print("Only PseudoOutputDevice loaded for relais " + relais[i]['name'])
         addPermMessage("Only PseudoOutputDevice loaded for relais " + relais[i]['name'])
